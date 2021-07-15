@@ -1,0 +1,96 @@
+{
+  "name": "@alife/hippo-request",
+  "version": "2.2.5",
+  "description": "Data fetch for component.",
+  "main": "lib/index",
+  "module": "es/index",
+  "module-next": "esn/index",
+  "sideEffects": false,
+  "keywords": [
+    "next",
+    "hippo-request"
+  ],
+  "types": "types/index.d.ts",
+  "author": {
+    "name": "xing.gex",
+    "email": "xing.gex@alibaba-inc.com"
+  },
+  "scripts": {
+    "lint": "npm run eslint && npm-ensure -t deps",
+    "eslint": "eslint 'src/**/*.@(js|jsx)' --fix",
+    "dev": "hippo-builder dev",
+    "dev-just": "hippo-builder dev",
+    "dev-mock": "node scripts/server",
+    "build": "hippo-builder build",
+    "test": "hippo-builder test",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.@(js|jsx)": [
+      "eslint --fix",
+      "npm-ensure -t deps",
+      "git add"
+    ]
+  },
+  "ensure": {
+    "deps": {
+      "checkDirs": [
+        "src/**/*"
+      ],
+      "ignores": [
+        "components",
+        "utils",
+        "widget",
+        "styles"
+      ]
+    }
+  },
+  "just": {
+    "type": "component/hippo-comp",
+    "plugins": {
+      "wdk": ">= 2"
+    },
+    "dist-tag": "next"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.alibaba-inc.com:hippo-design/request.git"
+  },
+  "dependencies": {
+    "@alife/mwdk-mtop": "^0.1.8",
+    "axios": "^0.18.0",
+    "axios-jsonp": "^1.0.2",
+    "lodash": "^4.17.21",
+    "qs": "^6.9.0",
+    "url-parse": "^1.5.1"
+  },
+  "devDependencies": {
+    "@ali/eslint-config-wdk": "1.x",
+    "@ali/hippo-builder": "3.x",
+    "axios-mock-adapter": "^1.19.0",
+    "babel-eslint": "10.x",
+    "eslint": "6.x",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-react": "7.x",
+    "husky": "0.x",
+    "lint-staged": "7.x",
+    "mm": "^2.4.1",
+    "npm-ensure": "1.x",
+    "power-assert": "^1.6.0",
+    "react": "16.x",
+    "react-dom": "16.x"
+  },
+  "peerDependencies": {
+    "react": "16.x",
+    "react-dom": "16.x"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npm.alibaba-inc.com",
+    "tag": "next"
+  },
+  "builder": {},
+  "engines": {
+    "node": ">= 8",
+    "just": ">= 5"
+  }
+}
